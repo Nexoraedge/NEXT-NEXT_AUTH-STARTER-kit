@@ -333,7 +333,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **DhoniDev-Ai**
 - YouTube: [@Dhonidev-ai](https://youtube.com/@Dhonidev-ai/)
 - GitHub: [@Nexoraedge](https://github.com/Nexoraedge)
-- Twitter: [@DhoniDevAi](https://twitter.com/DhoniDevAi)
+- Twitter: [@DhoniAi](https://twitter.com/DhoniAi)
 
 ---
 
