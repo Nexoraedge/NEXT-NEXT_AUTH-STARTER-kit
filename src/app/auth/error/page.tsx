@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Suspense } from "react"
 
 const errorMessages: Record<string, string> = {
     Configuration: "There is a problem with the authentication configuration.",
@@ -12,27 +13,41 @@ const errorMessages: Record<string, string> = {
     Default: "Something went wrong during authentication.",
 }
 
-export default function AuthErrorPage() {
+function ErrorContent() {
     const params = useSearchParams()
     const error = params.get("error") ?? "Default"
 
     return (
+        <Card className="max-w-md w-full">
+            <CardHeader>
+                <CardTitle>Authentication Error</CardTitle>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground">
+                    {errorMessages[error] ?? errorMessages.Default}
+                </p>
+
+                <Button asChild className="w-full">
+                    <Link href="/auth/login">Try Again</Link>
+                </Button>
+            </CardContent>
+        </Card>
+    )
+}
+
+export default function AuthErrorPage() {
+    return (
         <div className="min-h-screen flex items-center justify-center bg-muted">
-            <Card className="max-w-md w-full">
-                <CardHeader>
-                    <CardTitle>Authentication Error</CardTitle>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">
-                        {errorMessages[error] ?? errorMessages.Default}
-                    </p>
-
-                    <Button asChild className="w-full">
-                        <Link href="/auth/login">Try Again</Link>
-                    </Button>
-                </CardContent>
-            </Card>
+            <Suspense fallback={
+                <Card className="max-w-md w-full">
+                    <CardHeader>
+                        <CardTitle>Loading...</CardTitle>
+                    </CardHeader>
+                </Card>
+            }>
+                <ErrorContent />
+            </Suspense>
         </div>
     )
 }

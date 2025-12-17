@@ -19,12 +19,16 @@ export const metadata: Metadata = {
   description: "Full Stack AI Developer crafting smart products & frictionless experiences. Watch dev logs, AI builds & breakdowns on YouTube.",
   keywords: ["AI Developer", "Full Stack Developer", "AI Products", "YouTube", "ToneGenie", "Next.js"],
   authors: [{ name: "DhoniDev-Ai" }],
-  viewport: "width=device-width, initial-scale=1",
   openGraph: {
     title: "DhoniDev-Ai | Full Stack AI Developer",
     description: "Full Stack AI Developer crafting smart products & frictionless experiences.",
     type: "website",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
